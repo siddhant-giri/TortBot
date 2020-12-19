@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Total Victims Dashboard</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='dashboard.css')}}">
+  </head>
+  <body>
+
+ <button id="signout" >Confirm Sign Out</button>
+       
+
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-auth.js"></script>
+
+
+
+ 
+
+
+
+
+  <script type="text/javascript">
+    
+
+ var Config = {
+    apiKey: "AIzaSyAiwgQFJpEx_QTzNNWY8FD3iYjsZsxbzgQ",
+    authDomain: "tortbot-admin.firebaseapp.com",
+    projectId: "tortbot-admin",
+    storageBucket: "tortbot-admin.appspot.com",
+    messagingSenderId: "705868500245",
+    appId: "1:705868500245:web:d55e3d79ada103dd54ed1c"
+  };
+      // Initialize Firebase
+     firebase.initializeApp(Config);
+
+document.querySelector("#signout").addEventListener("click", () => { 
+        signOut();
+      });
+
+const signOut = () => {
+        firebase
+          .auth()
+          .signOut()
+          .then(function () {
+            location.replace('/admin');
+          })
+          .catch(function (error) {
+            alert("error signing out, check network connection");
+          });
+      };
+
+  </script>   
+
+  </body>
+
+</html>

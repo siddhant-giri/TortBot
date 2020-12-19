@@ -1,0 +1,64 @@
+body, h1, h2 {
+ margin:20px;
+ padding:0;
+}
+body {
+ background-image: url('images/details_bg.png');
+ font-family: Arial, sans-serif;
+ background-size: cover;
+}
+h1 {
+ padding:10px;
+ border-radius: 50px;
+ 
+ border-style: solid;
+ color: white;
+ text-align: center;
+}
+
+/*---------------------------*/
+/* Read Users */
+/*---------------------------*/
+#userList {
+ margin:10px;
+ padding:0;
+ width:200px;
+ float:left;
+ margin:10px;
+ border:3px solid white;
+ border-radius: 30px;
+
+}
+
+#userList h2 {
+ padding:10px;
+ margin:0;
+ color:black;
+}
+
+#userList li {
+ padding:10px 10px;
+ border-top:5px solid #ffffff;
+ cursor: pointer;
+ color:white;
+ border-radius: 30px;
+ font-style: normal;
+}
+
+#userList li:hover {
+ background: white;
+ color: #6600ff;
+ font-weight: bold;
+ border-radius: 30px;
+}
+
+#userDetail {
+ float: left;
+ width:800px;
+ margin:10px;
+ margin-left:0;
+ padding:10px;
+ border:3px solid #ffffff;
+ color:#ffffff;
+ border-radius: 20px;
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Total Victims Dashboard</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='dashboard.css')}}">
+  </head>
+  <body>
+
+    <h1>Total Complaints Registered</h1>
+
+
+    <ul id="userList"></ul>
+
+    <div id="userDetail">
+     <!-- <p >Name :<strong class="detailName"></strong></p> -->
+    </div>
+
+          
+
+  </body>
+
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+
+<!--   <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-auth.js"></script> -->
+
+
+
+  <script type="text/javascript">
+
+
+
+
+
+
+
+    // Initialize Firebase
+var firebaseConfig = {
+        apiKey: "AIzaSyD8Z4lfgdsvmDYZwDGgpCr-z_cxIrYxgC8",
+    authDomain: "crime-registration-bot.firebaseapp.com",
+    databaseURL: "https://crime-registration-bot-default-rtdb.firebaseio.com",
+    projectId: "crime-registration-bot",
+    storageBucket: "crime-registration-bot.appspot.com",
+    messagingSenderId: "214503224041",
+    appId: "1:214503224041:web:45443b71a4067162d27678"
+      };
+
+firebase.initializeApp(firebaseConfig);
+
+
+const dbRef = firebase.database().ref();
+
+const usersRef = dbRef.child('messages');
+const userListUI = document.getElementById("userList");
+
+usersRef.on("child_added", snap => {
+
+  let user = snap.val();
+
+  let $li = document.createElement("li");
+  $li.innerHTML = user.fname;
+  $li.setAttribute("child-key", snap.key);
+  $li.addEventListener("click", userClicked)
+  userListUI.append($li);
+
+});
+
+
+function userClicked(e) {
+
+  var userID = e.target.getAttribute("child-key");
+
+  const userRef = dbRef.child('messages/' + userID);
+  const userDetailUI = document.getElementById("userDetail");
+
+  userDetailUI.innerHTML = ""
+
+  userRef.on("child_added", snap => {
+
+
+    var $p = document.createElement("p");
+    $p.innerHTML = snap.key  + " - " +  snap.val()
+    userDetailUI.append($p);
+
+
+  });
+
+}
+
+
+
+
+  </script>
+
+
+
+</html>
