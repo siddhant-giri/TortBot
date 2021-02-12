@@ -1,1 +1,1 @@
-web: gunicorn app:tortbot
+web: gunicorn app:app
